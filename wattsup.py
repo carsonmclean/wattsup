@@ -330,7 +330,7 @@ if __name__ == '__main__':
   parser.add_argument('-i', '--interval', dest='interval', default=1, type=int, help='Reading interval in seconds (default 1 second)')
   parser.add_argument('-o', '--outfile-prefix', dest='prefix', default='WU-' + datetime.date.today().isoformat(), help='Prefix of output files')
   parser.add_argument('-r', '--raw', dest='raw', action='store_true', default=False, help='Save raw data')
-  parser.add_argument('-y', '--yes', dest='yes', action='store_true', default=False, help='Yes to all confirmations')
+  parser.add_argument('-y', '--yes', dest='yes', action='store_true', default=True, help='Yes to all confirmations')
   parser.add_argument('-c', '--clear', dest='clear', action='store_true', default=False, help='Clear the internal memory')
   parser.add_argument('-f', '--fetch', dest='fetch', action='store_true', default=False, help='Fetch all data logged in the internal memory')
   args = parser.parse_args()
