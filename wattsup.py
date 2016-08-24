@@ -88,7 +88,8 @@ class WattsUp(object):
     # fields[18] = fields[18]
     fields[19] = str(int(fields[19]) / 10.0)
     if len(fields) is 21:
-      fields[20] = str(int(fields[20].replace(';\r\n', '')))
+      #fields[20] = str(int(fields[20].replace(';\r\n', '')))
+      fields[20] = str("ThisIsBroken")
     elif len(fields) is 22:
       fields[21] = str(int(fields[21].replace(';\r\n', '')))
     return fields[1:]
@@ -102,23 +103,27 @@ class WattsUp(object):
     try:
       self.serialPort.write('#L,W,3,E,,%d;' % self.interval)
       elapsedTime = 0
-      logfile = open(logfilePrefix + '-' + self.name + '.csv', 'w')
+      now = datetime.datetime.now()
+      logfilePrefix = now.strftime("%Y%m%d-%H%M")
+      logfile = open(logfilePrefix + '.csv', 'w')
       logfile.write('Meter, Time, W, V, A, WH, Cost, WH/Mo, Cost/Mo, Wmax, Vmax, Amax, Wmin, Vmin, Amin, PF, DC, PC, HZ, VA\n')
-      sys.stdout.write('Meter, Time, W, V, A, WH, Cost, WH/Mo, Cost/Mo, Wmax, Vmax, Amax, Wmin, Vmin, Amin, PF, DC, PC, HZ, VA\n')
+      #sys.stdout.write('Meter, Time, W, V, A, WH, Cost, WH/Mo, Cost/Mo, Wmax, Vmax, Amax, Wmin, Vmin, Amin, PF, DC, PC, HZ, VA\n')
       while True:
         if elapsedTime > self.duration:
           break
 
-        if rawOutput:
-          fields = self.getRawLine()
-        else:
-          fields = self.getFormattedLine()
+        #if rawOutput:
+          #fields = self.getRawLine()
+        #else:
+        fields = self.getFormattedLine()
 
         if len(fields) < 20:
           continue
 
+        sys.stdout.write(str(fields[3]))
+
         for field in fields:
-          sys.stdout.write(str(field) + ', ')
+          #sys.stdout.write(str(field) + ', ')
           logfile.write('%s, ' % field)
         sys.stdout.write('\n')
         sys.stdout.flush()
