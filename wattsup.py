@@ -109,8 +109,8 @@ class WattsUp(object):
       logfile.write('Meter, Time, W, V, A, WH, Cost, WH/Mo, Cost/Mo, Wmax, Vmax, Amax, Wmin, Vmin, Amin, PF, DC, PC, HZ, VA\n')
       #sys.stdout.write('Meter, Time, W, V, A, WH, Cost, WH/Mo, Cost/Mo, Wmax, Vmax, Amax, Wmin, Vmin, Amin, PF, DC, PC, HZ, VA\n')
       while True:
-        if elapsedTime > self.duration:
-          break
+        #if elapsedTime > self.duration:
+          #break
 
         #if rawOutput:
           #fields = self.getRawLine()
