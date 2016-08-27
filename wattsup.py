@@ -120,7 +120,7 @@ class WattsUp(object):
         if len(fields) < 20:
           continue
 
-        sys.stdout.write(str(fields[3]))
+        sys.stdout.write(str(fields[2]))
 
         for field in fields:
           #sys.stdout.write(str(field) + ', ')
